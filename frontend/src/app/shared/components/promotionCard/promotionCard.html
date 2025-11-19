@@ -1,0 +1,70 @@
+<div class="mb-4 p-8 flex items-center justify-center">
+    <p-card [style]="{ width: '15rem', overflow: 'hidden' }" class="shadow-lg">
+
+        <!-- Imagem do Produto -->
+        <ng-template pTemplate="header">
+            <img
+                [src]="imageUrl"
+                alt="Produto"
+                class="w-full object-cover"
+            />
+        </ng-template>
+
+        <!-- Título do Produto -->
+        <ng-template pTemplate="title">
+            {{ title }}
+        </ng-template>
+
+        <!-- Subtítulo (Loja / Categoria) -->
+        <ng-template pTemplate="subtitle">
+            {{ subtitle }}
+        </ng-template>
+
+        <!-- Conteúdo do Card -->
+        <div class="flex flex-col gap-2">
+
+            <p class="text-sm text-gray-600">
+                {{ description }}
+            </p>
+
+            <!-- Preços -->
+            <div class="flex flex-col">
+                <span class="text-green-600 font-bold text-xl">
+                    {{ formatCurrency(price) }}
+                </span>
+
+                <span *ngIf="oldPrice > price" class="text-gray-400 line-through text-sm">
+                    {{ formatCurrency(oldPrice) }}
+                </span>
+            </div>
+
+            <!-- Tag de Desconto -->
+            <span
+                *ngIf="discountPercent > 0"
+                class="px-2 py-1 bg-red-500 text-white text-xs rounded w-fit"
+            >
+                -{{ discountPercent }}% OFF
+            </span>
+        </div>
+
+        <!-- Rodapé com botão de ação -->
+        <ng-template pTemplate="footer">
+            <div class="flex mt-3">
+                <a
+                    [href]="affiliateUrl"
+                    target="_blank"
+                    rel="nofollow noopener"
+                    class="w-full"
+                >
+                    <p-button
+                        label="Ver Oferta"
+                        severity="success"
+                        class="w-full"
+                        styleClass="w-full"
+                    ></p-button>
+                </a>
+            </div>
+        </ng-template>
+
+    </p-card>
+</div>
