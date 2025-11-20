@@ -1,6 +1,6 @@
 
 import { Component, inject, OnInit } from '@angular/core';
-import { PromotionsService } from '../../core/services/promotion.service';
+import { PromotionsService } from '../../core/services/promotion/promotion.service';
 import { Promotion } from '../../shared/models/promotion.model';
 import { PromotionCard } from "../../shared/components/promotionCard/promotionCard";
 
