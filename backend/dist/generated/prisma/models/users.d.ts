@@ -454,4 +454,4 @@ export type usersDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
     select?: Prisma.usersSelect<ExtArgs> | null;
     omit?: Prisma.usersOmit<ExtArgs> | null;
 };
-export {};
+export { Prisma };
