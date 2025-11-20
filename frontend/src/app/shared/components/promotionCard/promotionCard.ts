@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
@@ -9,7 +9,8 @@ import { CommonModule } from '@angular/common';
   templateUrl: './promotionCard.html',
   styleUrl: './promotionCard.css',
 })
-export class PromotionCard {
+export class PromotionCard implements OnInit{
+
   @Input() imageUrl: string = '';
 
   @Input() title: string = '';
@@ -24,13 +25,24 @@ export class PromotionCard {
 
   @Input() affiliateUrl: string = '';
 
+  ngOnInit() {
+  this.price = Number(this.price);
+  this.oldPrice = Number(this.oldPrice);
+}
+
+
   get discountPercent(): number {
+    console.log(`oldprice: ${this.oldPrice}   price: ${this.price}`)
+    console.log( this.oldPrice <= this.price)
+
     if (!this.oldPrice || this.oldPrice <= this.price) return 0;
     return Math.round(((this.oldPrice - this.price) / this.oldPrice) * 100);
   }
 
-  formatCurrency(value: number): string {
-    return value.toLocaleString('pt-BR', {
+  public formatCurrency(value: number): string {
+    const numberValue = Number(value);
+
+    return numberValue.toLocaleString('pt-BR', {
       style: 'currency',
       currency: 'BRL'
     });

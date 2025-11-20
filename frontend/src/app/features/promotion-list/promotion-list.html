@@ -3,12 +3,12 @@
      @for (promotion of promotions; track promotion.title) {
 <app-product
 [imageUrl]="promotion.affiliate_url"
-    [title]="'Fone JBL Tune 510BT'"
-    [subtitle]="'Amazon Brasil • Eletrônicos'"
+    [title]="promotion.title"
+    [subtitle]="promotion.summary"
     [description]="'Som potente, bateria de até 40h e carga rápida. Modelo original JBL.'"
-    [price]="179"
-    [oldPrice]="249"
-    [affiliateUrl]="'https://amzn.to/exemplo'"></app-product>
+    [price]="promotion.price"
+    [oldPrice]="promotion.old_price"
+    [affiliateUrl]="promotion.affiliate_url"></app-product>
 } @empty {
 <li>There are no items.</li>
 }
