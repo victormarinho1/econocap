@@ -2,7 +2,7 @@
     <div class="grid md:grid-cols-3 gap-8">
      @for (promotion of promotions; track promotion.title) {
 <app-product
-[imageUrl]="promotion.affiliate_url"
+[imageUrl]="promotion.products.url_image"
     [title]="promotion.title"
     [subtitle]="promotion.summary"
     [description]="'Som potente, bateria de até 40h e carga rápida. Modelo original JBL.'"
