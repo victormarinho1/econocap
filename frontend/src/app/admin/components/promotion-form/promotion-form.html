@@ -1,0 +1,58 @@
+<form [formGroup]="promotionForm" (ngSubmit)="submit()" class="max-w-3xl mx-auto p-6 bg-white rounded shadow space-y-6">
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Título -->
+    <div class="flex flex-col">
+      <label for="title" class="mb-1 font-medium text-gray-700">Título</label>
+      <input id="title" type="text" pInputText formControlName="title" class="border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200" />
+    </div>
+
+    <!-- Produto -->
+    <div class="flex flex-col">
+      <label for="product_id" class="mb-1 font-medium text-gray-700">Produto</label>
+      <p-select [options]="products" optionLabel="name" optionValue="id" formControlName="product_id" class="w-full"></p-select>
+    </div>
+
+    <!-- Resumo -->
+    <div class="flex flex-col md:col-span-2">
+      <label for="summary" class="mb-1 font-medium text-gray-700">Resumo</label>
+      <textarea id="summary" pInputTextarea formControlName="summary" class="border border-gray-300 rounded px-3 py-2 resize-none focus:ring focus:ring-blue-200"></textarea>
+    </div>
+
+    <!-- Preço -->
+    <div class="flex flex-col">
+      <label for="price" class="mb-1 font-medium text-gray-700">Preço</label>
+      <input id="price" type="number" pInputText formControlName="price" class="border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200" />
+    </div>
+    <!-- Rede Afiliada -->
+    <div class="flex flex-col">
+      <label for="affiliate_network" class="mb-1 font-medium text-gray-700">Rede Afiliada</label>
+      <input id="affiliate_network" type="text" pInputText formControlName="affiliate_network" class="border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200" />
+    </div>
+
+    <!-- URL Afiliada -->
+    <div class="flex flex-col md:col-span-2">
+      <label for="affiliate_url" class="mb-1 font-medium text-gray-700">URL Afiliada</label>
+      <input id="affiliate_url" type="text" pInputText formControlName="affiliate_url" class="border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200" />
+    </div>
+
+
+    <!-- Início -->
+    <div class="flex flex-col">
+      <label for="starts_at" class="mb-1 font-medium text-gray-700">Início</label>
+      <p-datepicker formControlName="starts_at" dateFormat="yy-mm-dd" class="w-full"></p-datepicker>
+    </div>
+
+    <!-- Fim -->
+    <div class="flex flex-col">
+      <label for="ends_at" class="mb-1 font-medium text-gray-700">Fim</label>
+      <p-datepicker formControlName="ends_at" dateFormat="yy-mm-dd" class="w-full"></p-datepicker>
+    </div>
+  </div>
+
+  <!-- Botão -->
+  <div class="flex justify-end">
+    <button type="submit" pButton>Cadastrar</button>
+  </div>
+
+</form>
