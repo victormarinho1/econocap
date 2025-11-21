@@ -2,12 +2,12 @@ import { DatePicker } from 'primeng/datepicker';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
-import { Product } from '../../../shared/models/product.model';
+import { Product } from '../../../../shared/models/product.model';
 import { InputText } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { ButtonModule } from 'primeng/button';
-import { StoreService } from '../../../core/services/store/store.service';
-import { Store } from '../../../shared/models/store.model';
+import { StoreService } from '../../../../core/services/store/store.service';
+import { Store } from '../../../../shared/models/store.model';
 import { CommonModule } from '@angular/common';
 import { Message } from 'primeng/message';
 
