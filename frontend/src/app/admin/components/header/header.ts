@@ -21,7 +21,8 @@ items: MenuItem[] | undefined;
                 icon: 'pi pi-plus',
                 items:[
                   {
-                    label:'Promoção'
+                    label:'Promoção',
+                    routerLink:'promotion-form'
                   },
                   {
                     label:'Produto'

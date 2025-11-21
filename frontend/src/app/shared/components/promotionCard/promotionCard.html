@@ -1,13 +1,26 @@
+<div class="card">
+<div class="card flex justify-center">
+       <p-galleria     (visibleChange)="displayBasic = false"
+ [value]="images" [visible]="displayBasic" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '850px' }" [numVisible]="7" [circular]="true" [fullScreen]="true" [showItemNavigators]="true" [showThumbnails]="false">
+            <ng-template #item let-item>
+                <img
+                    [src]="item.itemImageSrc"
+                    style="width: 100%; display: block;" />
+            </ng-template>
+        </p-galleria>
 <div class="mb-4 p-8 flex items-center justify-center">
-    <p-card [style]="{ width: '15rem', overflow: 'hidden' }" class="shadow-lg">
+    <p-card [style]="{ width: '15rem', overflow: 'hidden' }" class="shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
 
         <!-- Imagem do Produto -->
         <ng-template pTemplate="header">
-            <img
+             <img
                 [src]="imageUrl"
                 alt="Produto"
-                class="w-full object-cover"
+                class="w-full object-cover cursor-pointer"
+                (click)="displayBasic = true"
             />
+
+
         </ng-template>
 
         <!-- Título do Produto -->

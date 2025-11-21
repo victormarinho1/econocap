@@ -21,9 +21,7 @@ export class Login  {
     password: new FormControl('', [Validators.required])
   });
   checked1 = signal<boolean>(true);
-  ngOnInit() {
 
-  }
 
   onSubmit() {
     if (this.loginForm.valid) {
