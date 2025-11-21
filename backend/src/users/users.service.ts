@@ -20,6 +20,7 @@ export class UsersService {
   }
 
   async create(data: Prisma.usersCreateInput) {
+    console.log(data)
     const hashPassword = await bcrypt.hash(data.password_hash, 10);
     return this.prismaService.users.create({
       data:{...data, password_hash:hashPassword}});

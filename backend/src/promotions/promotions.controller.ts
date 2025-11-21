@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { PromotionsService } from './promotions.service';
 import { CreatePromotionDto } from './dto/create-promotion.dto';
 import { UpdatePromotionDto } from './dto/update-promotion.dto';
