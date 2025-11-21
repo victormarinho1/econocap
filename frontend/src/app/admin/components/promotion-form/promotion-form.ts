@@ -46,14 +46,16 @@ products: Product[] = [
     name: 'Produto 1',
     description: '',
     url_image: '',
-      created_at: new Date(),
-    },
+    created_at: new Date(),
+    product_images: []
+  },
     {
       id: '2',
       name: 'Produto 2',
       description: '',
       url_image: '',
       created_at: new Date(),
+      product_images: []
     },
   ];
   statuses = [

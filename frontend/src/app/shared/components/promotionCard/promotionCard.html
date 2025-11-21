@@ -1,83 +1,85 @@
 <div class="card">
-<div class="card flex justify-center">
-       <p-galleria     (visibleChange)="displayBasic = false"
- [value]="images" [visible]="displayBasic" [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '850px' }" [numVisible]="7" [circular]="true" [fullScreen]="true" [showItemNavigators]="true" [showThumbnails]="false">
-            <ng-template #item let-item>
-                <img
-                    [src]="item.itemImageSrc"
-                    style="width: 100%; display: block;" />
-            </ng-template>
-        </p-galleria>
-<div class="mb-4 p-8 flex items-center justify-center">
-    <p-card [style]="{ width: '15rem', overflow: 'hidden' }" class="shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-
+  <div class="card flex justify-center">
+    <p-galleria
+      (visibleChange)="displayBasic = false"
+      [value]="images"
+      [visible]="displayBasic"
+      [responsiveOptions]="responsiveOptions"
+      [containerStyle]="{ 'max-width': '700px','max-height':'600px','min-height':'600px' }"
+      [numVisible]="7"
+      [circular]="true"
+      [fullScreen]="true"
+      [showItemNavigators]="true"
+      [showThumbnails]="false"    >
+      <ng-template #item let-item>
+        <img [src]="item.url" style="width: 100%; display: block" />
+      </ng-template>
+    </p-galleria>
+    <div class="mb-4 p-8 flex items-center justify-center">
+      <p-card
+        [style]="{ width: '15rem', overflow: 'hidden' }"
+        class="shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+      >
         <!-- Imagem do Produto -->
         <ng-template pTemplate="header">
-             <img
-                [src]="imageUrl"
-                alt="Produto"
-                class="w-full object-cover cursor-pointer"
-                (click)="displayBasic = true"
-            />
-
-
+          <img
+            [src]="imageThubnail"
+            alt="Produto"
+            class="w-full object-cover cursor-pointer"
+            (click)="displayBasic = true"
+          />
         </ng-template>
 
         <!-- Título do Produto -->
         <ng-template pTemplate="title">
-            {{ title }}
+          {{ title }}
         </ng-template>
 
         <!-- Subtítulo (Loja / Categoria) -->
         <ng-template pTemplate="subtitle">
-            {{ subtitle }}
+          {{ subtitle }}
         </ng-template>
 
         <!-- Conteúdo do Card -->
         <div class="flex flex-col gap-2">
+          <p class="text-sm text-gray-600">
+            {{ description }}
+          </p>
 
-            <p class="text-sm text-gray-600">
-                {{ description }}
-            </p>
-
-            <!-- Preços -->
-            <div class="flex flex-col">
-                <span class="text-green-600 font-bold text-xl">
-                    {{ formatCurrency(price) }}
-                </span>
-
-                <span *ngIf="oldPrice > price" class="text-gray-400 line-through text-sm">
-                    {{ formatCurrency(oldPrice) }}
-                </span>
-            </div>
-
-            <!-- Tag de Desconto -->
-            <span
-                *ngIf="discountPercent > 0"
-                class="px-2 py-1 bg-red-500 text-white text-xs rounded w-fit"
-            >
-                -{{ discountPercent }}% OFF
+          <!-- Preços -->
+          <div class="flex flex-col">
+            <span class="text-green-600 font-bold text-xl">
+              {{ formatCurrency(price) }}
             </span>
+
+            <span *ngIf="oldPrice > price" class="text-gray-400 line-through text-sm">
+              {{ formatCurrency(oldPrice) }}
+            </span>
+          </div>
+
+          <!-- Tag de Desconto -->
+          <span
+            *ngIf="discountPercent > 0"
+            class="px-2 py-1 bg-red-500 text-white text-xs rounded w-fit"
+          >
+            -{{ discountPercent }}% OFF
+          </span>
         </div>
 
         <!-- Rodapé com botão de ação -->
         <ng-template pTemplate="footer">
-            <div class="flex mt-3">
-                <a
-                    [href]="affiliateUrl"
-                    target="_blank"
-                    rel="nofollow noopener"
-                    class="w-full"
-                >
-                    <p-button
-                        label="Ver Oferta"
-                        severity="success"
-                        class="w-full"
-                        styleClass="w-full"
-                    ></p-button>
-                </a>
-            </div>
+          <div class="flex mt-3">
+            <a [href]="affiliateUrl" target="_blank" rel="nofollow noopener" class="w-full">
+              <p-button
+                label="Ver Oferta"
+                severity="success"
+                class="w-full"
+                styleClass="w-full"
+              ></p-button>
+            </a>
+          </div>
         </ng-template>
-
-    </p-card>
+      </p-card>
+    </div>
+  </div>
 </div>

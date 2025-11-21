@@ -2,7 +2,8 @@
     <div class="grid md:grid-cols-3 gap-8">
      @for (promotion of promotions; track promotion.title) {
 <app-product
-[imageUrl]="promotion.products.url_image"
+  [imageThubnail]="promotion.products.product_images[1].url"
+  [images]="promotion.products.product_images"
     [title]="promotion.title"
     [subtitle]="promotion.summary"
     [description]="promotion.products.description"

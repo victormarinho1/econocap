@@ -1,8 +1,9 @@
-import { Component, Input, model, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { GalleriaModule } from 'primeng/galleria';
+import { ProductImage } from '../../models/producti-image.model';
 
 @Component({
   selector: 'app-product',
@@ -11,7 +12,11 @@ import { GalleriaModule } from 'primeng/galleria';
   styleUrl: './promotionCard.css',
 })
 export class PromotionCard implements OnInit{
+  @Input() images: ProductImage[] =[]
+
   @Input() imageUrl: string = '';
+
+  @Input() imageThubnail: string = '';
 
   @Input() title: string = '';
 
@@ -47,28 +52,6 @@ export class PromotionCard implements OnInit{
       }
     ];
 
-    // lista de imagens para teste
-    this.images = [
-      {
-        itemImageSrc: 'https://primefaces.org/cdn/primeng/images/galleria/galleria1.jpg',
-        thumbnailImageSrc: 'https://primefaces.org/cdn/primeng/images/galleria/galleria1s.jpg',
-        alt: 'Imagem 1',
-        title: 'Título 1'
-      },
-      {
-        itemImageSrc: 'https://primefaces.org/cdn/primeng/images/galleria/galleria2.jpg',
-        thumbnailImageSrc: 'https://primefaces.org/cdn/primeng/images/galleria/galleria2s.jpg',
-        alt: 'Imagem 2',
-        title: 'Título 2'
-      },
-      {
-        itemImageSrc: 'https://primefaces.org/cdn/primeng/images/galleria/galleria3.jpg',
-        thumbnailImageSrc: 'https://primefaces.org/cdn/primeng/images/galleria/galleria3s.jpg',
-        alt: 'Imagem 3',
-        title: 'Título 3'
-      }
-    ];
-
 }
 
 
@@ -87,7 +70,6 @@ export class PromotionCard implements OnInit{
   }
 
 
-  images: any[] = [];
   responsiveOptions: any[] = [];
 
 

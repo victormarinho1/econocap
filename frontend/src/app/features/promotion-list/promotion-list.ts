@@ -16,6 +16,7 @@ export class PromotionList implements OnInit{
 
   ngOnInit(): void {
     this.promotionsService.findAll().subscribe(response =>{
+      console.log(response)
       this.promotions = response;
     })
 }

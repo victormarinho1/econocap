@@ -12,6 +12,7 @@ export class PromotionsService {
   private apiUrl = environment.apiUrl;
 
    findAll(): Observable<Promotion[]> {
+    
   return this.http.get<Promotion[]>(`${this.apiUrl}/promotions`);
 }
 }
