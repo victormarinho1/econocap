@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.UsersScalarFieldEnum = exports.StoresScalarFieldEnum = exports.PromotionsScalarFieldEnum = exports.ProductsScalarFieldEnum = exports.ClicksScalarFieldEnum = exports.CategoriesScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
+exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.Product_imagesScalarFieldEnum = exports.UsersScalarFieldEnum = exports.StoresScalarFieldEnum = exports.PromotionsScalarFieldEnum = exports.ProductsScalarFieldEnum = exports.ClicksScalarFieldEnum = exports.CategoriesScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/index-browser"));
 exports.Decimal = runtime.Decimal;
 exports.NullTypes = {
@@ -50,7 +50,8 @@ exports.ModelName = {
     products: 'products',
     promotions: 'promotions',
     stores: 'stores',
-    users: 'users'
+    users: 'users',
+    product_images: 'product_images'
 };
 exports.TransactionIsolationLevel = {
     ReadUncommitted: 'ReadUncommitted',
@@ -75,7 +76,6 @@ exports.ProductsScalarFieldEnum = {
     id: 'id',
     name: 'name',
     description: 'description',
-    url_image: 'url_image',
     created_at: 'created_at'
 };
 exports.PromotionsScalarFieldEnum = {
@@ -114,6 +114,14 @@ exports.UsersScalarFieldEnum = {
     role: 'role',
     created_at: 'created_at',
     updated_at: 'updated_at'
+};
+exports.Product_imagesScalarFieldEnum = {
+    id: 'id',
+    product_id: 'product_id',
+    url: 'url',
+    alt_text: 'alt_text',
+    position: 'position',
+    created_at: 'created_at'
 };
 exports.SortOrder = {
     asc: 'asc',

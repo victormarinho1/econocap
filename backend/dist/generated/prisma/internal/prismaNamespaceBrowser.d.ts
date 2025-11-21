@@ -17,6 +17,7 @@ export declare const ModelName: {
     readonly promotions: "promotions";
     readonly stores: "stores";
     readonly users: "users";
+    readonly product_images: "product_images";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -45,7 +46,6 @@ export declare const ProductsScalarFieldEnum: {
     readonly id: "id";
     readonly name: "name";
     readonly description: "description";
-    readonly url_image: "url_image";
     readonly created_at: "created_at";
 };
 export type ProductsScalarFieldEnum = (typeof ProductsScalarFieldEnum)[keyof typeof ProductsScalarFieldEnum];
@@ -89,6 +89,15 @@ export declare const UsersScalarFieldEnum: {
     readonly updated_at: "updated_at";
 };
 export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum];
+export declare const Product_imagesScalarFieldEnum: {
+    readonly id: "id";
+    readonly product_id: "product_id";
+    readonly url: "url";
+    readonly alt_text: "alt_text";
+    readonly position: "position";
+    readonly created_at: "created_at";
+};
+export type Product_imagesScalarFieldEnum = (typeof Product_imagesScalarFieldEnum)[keyof typeof Product_imagesScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";

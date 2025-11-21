@@ -163,6 +163,7 @@ export declare const ModelName: {
     readonly promotions: "promotions";
     readonly stores: "stores";
     readonly users: "users";
+    readonly product_images: "product_images";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -175,7 +176,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "categories" | "clicks" | "products" | "promotions" | "stores" | "users";
+        modelProps: "categories" | "clicks" | "products" | "promotions" | "stores" | "users" | "product_images";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -623,6 +624,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        product_images: {
+            payload: Prisma.$product_imagesPayload<ExtArgs>;
+            fields: Prisma.product_imagesFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.product_imagesFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.product_imagesFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload>;
+                };
+                findFirst: {
+                    args: Prisma.product_imagesFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.product_imagesFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload>;
+                };
+                findMany: {
+                    args: Prisma.product_imagesFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload>[];
+                };
+                create: {
+                    args: Prisma.product_imagesCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload>;
+                };
+                createMany: {
+                    args: Prisma.product_imagesCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                createManyAndReturn: {
+                    args: Prisma.product_imagesCreateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload>[];
+                };
+                delete: {
+                    args: Prisma.product_imagesDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload>;
+                };
+                update: {
+                    args: Prisma.product_imagesUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.product_imagesDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.product_imagesUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateManyAndReturn: {
+                    args: Prisma.product_imagesUpdateManyAndReturnArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload>[];
+                };
+                upsert: {
+                    args: Prisma.product_imagesUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$product_imagesPayload>;
+                };
+                aggregate: {
+                    args: Prisma.Product_imagesAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateProduct_images>;
+                };
+                groupBy: {
+                    args: Prisma.product_imagesGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.Product_imagesGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.product_imagesCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.Product_imagesCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -673,7 +748,6 @@ export declare const ProductsScalarFieldEnum: {
     readonly id: "id";
     readonly name: "name";
     readonly description: "description";
-    readonly url_image: "url_image";
     readonly created_at: "created_at";
 };
 export type ProductsScalarFieldEnum = (typeof ProductsScalarFieldEnum)[keyof typeof ProductsScalarFieldEnum];
@@ -717,6 +791,15 @@ export declare const UsersScalarFieldEnum: {
     readonly updated_at: "updated_at";
 };
 export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum];
+export declare const Product_imagesScalarFieldEnum: {
+    readonly id: "id";
+    readonly product_id: "product_id";
+    readonly url: "url";
+    readonly alt_text: "alt_text";
+    readonly position: "position";
+    readonly created_at: "created_at";
+};
+export type Product_imagesScalarFieldEnum = (typeof Product_imagesScalarFieldEnum)[keyof typeof Product_imagesScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -771,6 +854,7 @@ export type GlobalOmitConfig = {
     promotions?: Prisma.promotionsOmit;
     stores?: Prisma.storesOmit;
     users?: Prisma.usersOmit;
+    product_images?: Prisma.product_imagesOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

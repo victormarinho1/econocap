@@ -12,3 +12,4 @@ export type products = Prisma.productsModel;
 export type promotions = Prisma.promotionsModel;
 export type stores = Prisma.storesModel;
 export type users = Prisma.usersModel;
+export type product_images = Prisma.product_imagesModel;

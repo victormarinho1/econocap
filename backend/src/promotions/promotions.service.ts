@@ -21,7 +21,11 @@ export class PromotionsService {
       summary: true,
       old_price: true,
       affiliate_url: true,      
-      products: true,
+      products: {
+        include: {
+            product_images: true, 
+          },
+      },
       product_id: false 
     },
   });

@@ -196,7 +196,7 @@ export type PromotionsGroupByOutputType = {
     title: string;
     summary: string | null;
     price: runtime.Decimal;
-    old_price: runtime.Decimal;
+    old_price: runtime.Decimal | null;
     discount_price: runtime.Decimal | null;
     currency: string | null;
     affiliate_url: string;
@@ -228,7 +228,7 @@ export type promotionsWhereInput = {
     title?: Prisma.StringFilter<"promotions"> | string;
     summary?: Prisma.StringNullableFilter<"promotions"> | string | null;
     price?: Prisma.DecimalFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.DecimalNullableFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.DecimalNullableFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.StringNullableFilter<"promotions"> | string | null;
     affiliate_url?: Prisma.StringFilter<"promotions"> | string;
@@ -253,7 +253,7 @@ export type promotionsOrderByWithRelationInput = {
     title?: Prisma.SortOrder;
     summary?: Prisma.SortOrderInput | Prisma.SortOrder;
     price?: Prisma.SortOrder;
-    old_price?: Prisma.SortOrder;
+    old_price?: Prisma.SortOrderInput | Prisma.SortOrder;
     discount_price?: Prisma.SortOrderInput | Prisma.SortOrder;
     currency?: Prisma.SortOrderInput | Prisma.SortOrder;
     affiliate_url?: Prisma.SortOrder;
@@ -281,7 +281,7 @@ export type promotionsWhereUniqueInput = Prisma.AtLeast<{
     title?: Prisma.StringFilter<"promotions"> | string;
     summary?: Prisma.StringNullableFilter<"promotions"> | string | null;
     price?: Prisma.DecimalFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.DecimalNullableFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.DecimalNullableFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.StringNullableFilter<"promotions"> | string | null;
     affiliate_url?: Prisma.StringFilter<"promotions"> | string;
@@ -306,7 +306,7 @@ export type promotionsOrderByWithAggregationInput = {
     title?: Prisma.SortOrder;
     summary?: Prisma.SortOrderInput | Prisma.SortOrder;
     price?: Prisma.SortOrder;
-    old_price?: Prisma.SortOrder;
+    old_price?: Prisma.SortOrderInput | Prisma.SortOrder;
     discount_price?: Prisma.SortOrderInput | Prisma.SortOrder;
     currency?: Prisma.SortOrderInput | Prisma.SortOrder;
     affiliate_url?: Prisma.SortOrder;
@@ -335,7 +335,7 @@ export type promotionsScalarWhereWithAggregatesInput = {
     title?: Prisma.StringWithAggregatesFilter<"promotions"> | string;
     summary?: Prisma.StringNullableWithAggregatesFilter<"promotions"> | string | null;
     price?: Prisma.DecimalWithAggregatesFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalWithAggregatesFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.DecimalNullableWithAggregatesFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.DecimalNullableWithAggregatesFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.StringNullableWithAggregatesFilter<"promotions"> | string | null;
     affiliate_url?: Prisma.StringWithAggregatesFilter<"promotions"> | string;
@@ -353,7 +353,7 @@ export type promotionsCreateInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -378,7 +378,7 @@ export type promotionsUncheckedCreateInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -397,7 +397,7 @@ export type promotionsUpdateInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -422,7 +422,7 @@ export type promotionsUncheckedUpdateInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -444,7 +444,7 @@ export type promotionsCreateManyInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -462,7 +462,7 @@ export type promotionsUpdateManyMutationInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -483,7 +483,7 @@ export type promotionsUncheckedUpdateManyInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -740,7 +740,7 @@ export type promotionsCreateWithoutCategoriesInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -763,7 +763,7 @@ export type promotionsUncheckedCreateWithoutCategoriesInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -809,7 +809,7 @@ export type promotionsScalarWhereInput = {
     title?: Prisma.StringFilter<"promotions"> | string;
     summary?: Prisma.StringNullableFilter<"promotions"> | string | null;
     price?: Prisma.DecimalFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.DecimalNullableFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.DecimalNullableFilter<"promotions"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.StringNullableFilter<"promotions"> | string | null;
     affiliate_url?: Prisma.StringFilter<"promotions"> | string;
@@ -827,7 +827,7 @@ export type promotionsCreateWithoutClicksInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -851,7 +851,7 @@ export type promotionsUncheckedCreateWithoutClicksInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -882,7 +882,7 @@ export type promotionsUpdateWithoutClicksInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -906,7 +906,7 @@ export type promotionsUncheckedUpdateWithoutClicksInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -924,7 +924,7 @@ export type promotionsCreateWithoutProductsInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -947,7 +947,7 @@ export type promotionsUncheckedCreateWithoutProductsInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -987,7 +987,7 @@ export type promotionsCreateWithoutStoresInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -1010,7 +1010,7 @@ export type promotionsUncheckedCreateWithoutStoresInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -1052,7 +1052,7 @@ export type promotionsCreateManyCategoriesInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -1070,7 +1070,7 @@ export type promotionsUpdateWithoutCategoriesInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1093,7 +1093,7 @@ export type promotionsUncheckedUpdateWithoutCategoriesInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1114,7 +1114,7 @@ export type promotionsUncheckedUpdateManyWithoutCategoriesInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1134,7 +1134,7 @@ export type promotionsCreateManyProductsInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -1152,7 +1152,7 @@ export type promotionsUpdateWithoutProductsInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1175,7 +1175,7 @@ export type promotionsUncheckedUpdateWithoutProductsInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1196,7 +1196,7 @@ export type promotionsUncheckedUpdateManyWithoutProductsInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1216,7 +1216,7 @@ export type promotionsCreateManyStoresInput = {
     title: string;
     summary?: string | null;
     price: runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price: runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: string | null;
     affiliate_url: string;
@@ -1234,7 +1234,7 @@ export type promotionsUpdateWithoutStoresInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1257,7 +1257,7 @@ export type promotionsUncheckedUpdateWithoutStoresInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1278,7 +1278,7 @@ export type promotionsUncheckedUpdateManyWithoutStoresInput = {
     title?: Prisma.StringFieldUpdateOperationsInput | string;
     summary?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
-    old_price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string;
+    old_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     discount_price?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null;
     currency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     affiliate_url?: Prisma.StringFieldUpdateOperationsInput | string;
@@ -1432,7 +1432,7 @@ export type $promotionsPayload<ExtArgs extends runtime.Types.Extensions.Internal
         title: string;
         summary: string | null;
         price: runtime.Decimal;
-        old_price: runtime.Decimal;
+        old_price: runtime.Decimal | null;
         discount_price: runtime.Decimal | null;
         currency: string | null;
         affiliate_url: string;
