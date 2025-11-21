@@ -5,14 +5,19 @@
       [value]="images"
       [visible]="displayBasic"
       [responsiveOptions]="responsiveOptions"
-      [containerStyle]="{ 'max-width': '700px','max-height':'600px','min-height':'600px' }"
+      [containerStyle]="{ 'max-width': '700px', 'width': '100%' }"
       [numVisible]="7"
       [circular]="true"
       [fullScreen]="true"
       [showItemNavigators]="true"
       [showThumbnails]="false"    >
       <ng-template #item let-item>
-        <img [src]="item.url" style="width: 100%; display: block" />
+       <img
+
+  [src]="item.url"
+  style="width: 100%; height: 100%; object-fit: cover; display: block;"
+/>
+
       </ng-template>
     </p-galleria>
     <div class="mb-4 p-8 flex items-center justify-center">

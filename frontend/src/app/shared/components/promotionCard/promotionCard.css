@@ -1,0 +1,4 @@
+.ui-galleria-panel {
+  aspect-ratio: 4/3; /* altura proporcional à largura */
+  width: 100%;
+}
