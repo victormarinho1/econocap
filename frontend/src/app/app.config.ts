@@ -1,6 +1,11 @@
-import { ApplicationConfig, importProvidersFrom, provideBrowserGlobalErrorListeners, provideZonelessChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  importProvidersFrom,
+  provideBrowserGlobalErrorListeners,
+  provideZonelessChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
-import { provideHttpClient, withFetch, withInterceptors} from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { CookieService } from 'ngx-cookie-service';
 import { routes } from './app.routes';
@@ -15,26 +20,23 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideHttpClient(withFetch()),
     provideAnimationsAsync(),
-      providePrimeNG({
+    providePrimeNG({
+      ripple: true,
       theme: {
         preset: MyPreset,
         options: {
-         cssLayer: {
-                name: 'primeng',
-                order: 'theme, base, primeng'
-            },
-            darkModeSelector: '.my-app-dark'
-        }
+          cssLayer: {
+            name: 'primeng',
+            order: 'mypreset, theme, base, primeng,  tailwind-utilities',
+          },
+          darkModeSelector: '.my-app-dark',
+        },
       },
-
-      ripple: true,
     }),
-    provideHttpClient(
-      withInterceptors([AuthInterceptor])
-    ),
+    provideHttpClient(withInterceptors([AuthInterceptor])),
     importProvidersFrom(CookieService),
     CookieService,
     provideRouter(routes),
-     provideClientHydration(withEventReplay()),
-    ]
+    provideClientHydration(withEventReplay()),
+  ],
 };
