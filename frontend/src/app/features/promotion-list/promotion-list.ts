@@ -32,6 +32,9 @@ import { InputGroupModule } from 'primeng/inputgroup';
   styleUrl: './promotion-list.css',
 })
 export class PromotionList {
+selectCategory(category:string) {
+  this.category = category
+}
   onPageChange($event: Event) {
     throw new Error('Method not implemented.');
   }
@@ -44,7 +47,7 @@ export class PromotionList {
   products = signal<any>([]);
   productService = inject(ProductService);
   layout: 'grid' | 'list' = 'grid';
-
+  category:string = 'Ofertas'
 
   categories = resource({
     params: () => ({}),

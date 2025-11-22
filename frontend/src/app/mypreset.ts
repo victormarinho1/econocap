@@ -31,7 +31,7 @@ const MyPreset = definePreset(Aura, {
           300: '#d1d5db',
           400: '#9ca3af',
           500: '#6b7280',     // textos secundários
-          600: '#4b5563',
+          600: '#ffffff',
           700: '#374151',
           800: '#1f2937',     // textos principais
           900: '#111827',
@@ -49,7 +49,7 @@ const MyPreset = definePreset(Aura, {
           200: '#2c2c2c',
           300: '#383838',
           400: '#4b4b4b',
-          500: '#616161',     // textos secundários
+          500: '#ffffff',     // textos secundários
           600: '#757575',
           700: '#9e9e9e',
           800: '#cfcfcf',     // textos principais
