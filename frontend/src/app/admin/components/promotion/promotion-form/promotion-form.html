@@ -1,78 +1,342 @@
-<form [formGroup]="promotionForm" (ngSubmit)="submit()" class="max-w-3xl mx-auto p-6 bg-white rounded shadow space-y-6">
+<p-message *ngIf="successMessage" severity="success" text="{{ successMessage }}"></p-message>
+<p-message *ngIf="errorMessage" severity="error" text="{{ errorMessage }}"></p-message>
+<p-toast [showTransitionOptions]="'250ms'" [showTransformOptions]="'translateX(100%)'" [hideTransitionOptions]="'150ms'" [hideTransformOptions]="'translateX(100%)'" />
+<form
+  class="max-w-3xl mx-auto p-6 bg-white rounded shadow-lg space-y-6"
+  [formGroup]="promotionForm"
+>
+<p class="text-3xl text-primary font-bold text-center">Cadastro de Promoção</p>
+  <p-stepper [value]="activeStep" class="basis-[50rem]" [linear]="true">
+    <p-step-list>
+      <p-step [value]="1">Detalhes da Promoção</p-step>
+<p-step [value]="2">Configurações de Produto</p-step>
+<p-step [value]="3">Revisar e Finalizar</p-step>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    <!-- Título -->
-    <div class="flex flex-col">
-      <label for="title" class="mb-1 font-medium text-gray-700">Título</label>
-      <input id="title" type="text" pInputText formControlName="title" class="border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200"
-      [invalid]="promotionForm.get('title')?.invalid && promotionForm.get('title')?.touched"
-          />
-      @if(promotionForm.controls.title.invalid && promotionForm.controls.title.touched){
-        @if(promotionForm.controls.title.errors?.['required']){<p-message severity="error" size="small" variant="simple">O titulo é obrigatório</p-message>}
-        }
+    </p-step-list>
+    <p-step-panels>
+      <p-step-panel [value]="1">
+        <ng-template #content let-activateCallback="activateCallback">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Título -->
+            <div class="flex flex-col md:col-span-2">
+              <label for="title" class="mb-1 font-medium text-gray-700">Título</label>
+              <input
+                id="title"
+                type="text"
+                pInputText
+                formControlName="title"
+                [invalid]="
+                  promotionForm.get('title')?.invalid && promotionForm.get('title')?.touched
+                "
+              />
+              @if(promotionForm.controls.title.invalid && promotionForm.controls.title.touched){
+              @if(promotionForm.controls.title.errors?.['required']){<p-message
+                severity="error"
+                size="small"
+                variant="simple"
+                >O titulo é obrigatório</p-message
+              >} }
+            </div>
+            <div class="flex flex-col md:col-span-2">
+              <label for="summary" class="mb-1 font-medium text-gray-700">Resumo</label>
+              <textarea id="summary" pInputTextarea formControlName="summary"
+               [invalid]="
+                  promotionForm.get('summary')?.invalid && promotionForm.get('summary')?.touched
+                "
+              ></textarea>
+                @if(promotionForm.controls.summary.invalid && promotionForm.controls.summary.touched){
+              @if(promotionForm.controls.summary.errors?.['required']){<p-message
+                severity="error"
+                size="small"
+                variant="simple"
+                >O resumo é obrigatório</p-message
+              >} }
+            </div>
+
+            <!-- Preço Antigo-->
+            <div class="flex flex-col">
+              <label for="old_price" class="mb-1 font-medium text-gray-700">Preço Original</label>
+              <input id="old_price" type="number" pInputText formControlName="old_price"
+              [invalid]="
+                  promotionForm.get('old_price')?.invalid && promotionForm.get('old_price')?.touched
+                " />
+                @if(promotionForm.controls.old_price.invalid && promotionForm.controls.old_price.touched){
+              @if(promotionForm.controls.old_price.errors?.['required']){<p-message
+                severity="error"
+                size="small"
+                variant="simple"
+                >O preço original é obrigatório</p-message
+              >} }
+            </div>
+
+            <!-- Preço -->
+            <div class="flex flex-col">
+              <label for="price" class="mb-1 font-medium text-gray-700">Preço com desconto</label>
+              <input id="price" type="number" pInputText formControlName="price"
+              [invalid]="
+                  promotionForm.get('price')?.invalid && promotionForm.get('price')?.touched
+                " />
+                @if(promotionForm.controls.price.invalid && promotionForm.controls.price.touched){
+              @if(promotionForm.controls.price.errors?.['required']){<p-message
+                severity="error"
+                size="small"
+                variant="simple"
+                >O preço com desconto é obrigatório</p-message
+              >} }
+            </div>
+
+            <!-- Cupom -->
+            <div class="flex flex-col md:col-span-2">
+              <label for="coupon_code" class="mb-1 font-medium text-gray-700">Cupom</label>
+              <input id="coupon_code" type="text" pInputText formControlName="coupon_code"
+               />
+            </div>
+
+            <!-- Início -->
+            <div class="flex flex-col">
+              <label for="starts_at" class="mb-1 font-medium text-gray-700">Início</label>
+              <p-datepicker
+                formControlName="starts_at"
+                 dateFormat="dd/mm/yy"
+                class="w-full"
+                [invalid]="
+                  promotionForm.get('starts_at')?.invalid && promotionForm.get('starts_at')?.touched
+                "
+              ></p-datepicker>
+                @if(promotionForm.controls.starts_at.invalid && promotionForm.controls.starts_at.touched){
+              @if(promotionForm.controls.starts_at.errors?.['required']){<p-message
+                severity="error"
+                size="small"
+                variant="simple"
+                >O inicio é obrigatório</p-message
+              >} }
+            </div>
+
+            <!-- Fim -->
+            <div class="flex flex-col">
+              <label for="ends_at" class="mb-1 font-medium text-gray-700">Fim</label>
+              <p-datepicker
+                formControlName="ends_at"
+                 dateFormat="dd/mm/yy"
+                class="w-full"
+                [invalid]="
+                  promotionForm.get('ends_at')?.invalid && promotionForm.get('ends_at')?.touched
+                "
+              ></p-datepicker>
+                @if(promotionForm.controls.ends_at.invalid && promotionForm.controls.ends_at.touched){
+              @if(promotionForm.controls.ends_at.errors?.['required']){<p-message
+                severity="error"
+                size="small"
+                variant="simple"
+                >O fim é obrigatório</p-message
+              >} }
+            </div>
+          </div>
+          <div class="flex pt-6 justify-end">
+            <p-button
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+            (onClick)="onNext(activateCallback,2)"
+            />
+          </div>
+        </ng-template>
+      </p-step-panel>
+
+      <p-step-panel [value]="2">
+        <ng-template #content let-activateCallback="activateCallback">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Produto -->
+            <div class="flex flex-col">
+              <label for="product_id" class="mb-1 font-medium text-gray-700">Produto</label>
+              <p-select
+                [options]="products"
+                optionLabel="name"
+                [filter]="true"
+                optionValue="id"
+                formControlName="product_id"
+                class="w-full"
+                                (onChange)="onProductSelected($event.value)"
+
+                [invalid]="
+                  promotionForm.get('product_id')?.invalid && promotionForm.get('product_id')?.touched
+                "
+              ></p-select>
+               @if(promotionForm.controls.product_id.invalid && promotionForm.controls.product_id.touched){
+              @if(promotionForm.controls.product_id.errors?.['required']){<p-message
+                severity="error"
+                size="small"
+                variant="simple"
+                >O produto é obrigatório</p-message
+              >} }
+            </div>
+
+            <!-- Rede Afiliada -->
+            <div class="flex flex-col">
+              <label for="store_id" class="mb-1 font-medium text-gray-700"
+                >Rede Afiliada</label
+              >
+              <p-select
+                [options]="stores"
+                optionLabel="name"
+                [filter]="true"
+                optionValue="id"
+                id="store_id"
+                type="text"
+                formControlName="store_id"
+                class="w-full"
+                (onChange)="onStoreSelected($event.value)"
+                [invalid]="
+                  promotionForm.get('store_id')?.invalid && promotionForm.get('store_id')?.touched
+                "
+              />
+               @if(promotionForm.controls.store_id.invalid && promotionForm.controls.store_id.touched){
+              @if(promotionForm.controls.store_id.errors?.['required']){<p-message
+                severity="error"
+                size="small"
+                variant="simple"
+                >A loja é obrigatória</p-message
+              >} }
+            </div>
+
+            <!-- URL Afiliada -->
+            <div class="flex flex-col md:col-span-2">
+              <label for="affiliate_url" class="mb-1 font-medium text-gray-700">URL Afiliada</label>
+              <input id="affiliate_url" type="text" pInputText formControlName="affiliate_url"
+              [invalid]="
+                  promotionForm.get('affiliate_url')?.invalid && promotionForm.get('affiliate_url')?.touched
+                " />
+               @if(promotionForm.controls.affiliate_url.invalid && promotionForm.controls.affiliate_url.touched){
+              @if(promotionForm.controls.affiliate_url.errors?.['required']){<p-message
+                severity="error"
+                size="small"
+                variant="simple"
+                >A url de afiliação é obrigatório</p-message
+              >}
+
+                @if(promotionForm.controls.affiliate_url.errors?.['pattern']){<p-message
+                severity="error"
+                size="small"
+                variant="simple"
+                >Url invalida</p-message
+              >}
+
+
+            }
+            </div>
+          </div>
+          <div class="flex pt-6 justify-between">
+            <p-button
+              label="Back"
+              severity="secondary"
+              icon="pi pi-arrow-left"
+              (onClick)="activateCallback(1)"
+            />
+            <p-button
+              label="Next"
+              icon="pi pi-arrow-right"
+              iconPos="right"
+            (onClick)="onNext(activateCallback,3)"
+            />
+          </div>
+        </ng-template>
+      </p-step-panel>
+
+      <p-step-panel [value]="3">
+  <ng-template #content let-activateCallback="activateCallback">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Título -->
+      <div class="p-4 border rounded bg-gray-50 md:col-span-2">
+        <p class="text-sm text-gray-600">Título</p>
+        <p class="font-semibold">{{ promotionForm.value.title }}</p>
+      </div>
+
+      <!-- Resumo -->
+      <div class="p-4 border rounded bg-gray-50 md:col-span-2">
+        <p class="text-sm text-gray-600">Resumo</p>
+        <p class="font-semibold">{{ promotionForm.value.summary }}</p>
+      </div>
+
+      <!-- Preço Original -->
+      <div class="p-4 border rounded bg-gray-50">
+        <p class="text-sm text-gray-600">Preço original</p>
+        <p class="font-semibold">R$ {{ promotionForm.value.old_price }}</p>
+      </div>
+
+      <!-- Preço com desconto -->
+      <div class="p-4 border rounded bg-gray-50">
+        <p class="text-sm text-gray-600">Preço com desconto</p>
+        <p class="font-semibold text-green-700">R$ {{ promotionForm.value.price }}</p>
+      </div>
+
+      <!-- Cupom -->
+      <div class="p-4 border rounded bg-gray-50 md:col-span-2">
+        <p class="text-sm text-gray-600">Cupom</p>
+        <p class="font-semibold">
+          {{ promotionForm.value.coupon_code || '—' }}
+        </p>
+      </div>
+
+      <!-- Início -->
+      <div class="p-4 border rounded bg-gray-50">
+        <p class="text-sm text-gray-600">Início</p>
+        <p class="font-semibold">{{ promotionForm.value.starts_at | date:'yyyy-MM-dd' }}</p>
+      </div>
+
+      <!-- Fim -->
+      <div class="p-4 border rounded bg-gray-50">
+        <p class="text-sm text-gray-600">Fim</p>
+        <p class="font-semibold">{{ promotionForm.value.ends_at | date:'yyyy-MM-dd' }}</p>
+      </div>
+
+      <!-- Produto -->
+      <div class="p-4 border rounded bg-gray-50">
+        <p class="text-sm text-gray-600">Produto</p>
+        <p class="font-semibold">
+        {{ selectedProduct?.name }}
+
+        </p>
+      </div>
+
+      <!-- Rede Afiliada -->
+      <div class="p-4 border rounded bg-gray-50">
+        <p class="text-sm text-gray-600">Rede Afiliada</p>
+        <p class="font-semibold">
+          {{ selectedStore?.name }}
+        </p>
+      </div>
+
+      <!-- URL Afiliada -->
+      <div class="p-4 border rounded bg-gray-50 md:col-span-2">
+        <p class="text-sm text-gray-600">URL Afiliada</p>
+        <p class="font-semibold break-all">
+          {{ promotionForm.value.affiliate_url }}
+        </p>
+      </div>
 
     </div>
 
-    <!-- Produto -->
-    <div class="flex flex-col">
-      <label for="product_id" class="mb-1 font-medium text-gray-700">Produto</label>
-      <p-select [options]="products" optionLabel="name" [filter]="true" optionValue="id" formControlName="product_id" class="w-full"></p-select>
+    <div class="flex pt-6 justify-between">
+      <p-button
+        label="Back"
+        severity="secondary"
+        icon="pi pi-arrow-left"
+        (onClick)="activateCallback(2)"
+      />
+
+      <p-button
+        label="Finalizar"
+        icon="pi pi-check"
+        iconPos="right"
+        (onClick)="submit(activateCallback)"
+      />
     </div>
 
-    <!-- Resumo -->
-    <div class="flex flex-col md:col-span-2">
-      <label for="summary" class="mb-1 font-medium text-gray-700">Resumo</label>
-      <textarea id="summary" pInputTextarea formControlName="summary" class="border border-gray-300 rounded px-3 py-2 resize-none focus:ring focus:ring-blue-200"></textarea>
-    </div>
+  </ng-template>
+</p-step-panel>
 
-    <!-- Preço Antigo-->
-    <div class="flex flex-col">
-      <label for="old_price" class="mb-1 font-medium text-gray-700">Preço Antigo</label>
-      <input id="old_price" type="number" pInputText formControlName="old_price" class="border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200" />
-    </div>
-
-     <!-- Preço -->
-    <div class="flex flex-col">
-      <label for="price" class="mb-1 font-medium text-gray-700">Preço</label>
-      <input id="price" type="number" pInputText formControlName="price" class="border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200" />
-    </div>
-
-
-    <!-- Cupom -->
-    <div class="flex flex-col">
-      <label for="coupon_code" class="mb-1 font-medium text-gray-700">Cupom</label>
-      <input id="coupon_code" type="text" pInputText formControlName="coupon_code" class="border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200" />
-    </div>
-
-    <!-- Rede Afiliada -->
-    <div class="flex flex-col">
-      <label for="affiliate_network" class="mb-1 font-medium text-gray-700">Rede Afiliada</label>
-      <p-select [options]="stores" optionLabel="name" [filter]="true" optionValue="id" id="affiliate_network" type="text"  formControlName="affiliate_network" class="w-full" />
-    </div>
-
-    <!-- URL Afiliada -->
-    <div class="flex flex-col md:col-span-2">
-      <label for="affiliate_url" class="mb-1 font-medium text-gray-700">URL Afiliada</label>
-      <input id="affiliate_url" type="text" pInputText formControlName="affiliate_url" class="border border-gray-300 rounded px-3 py-2 focus:ring focus:ring-blue-200" />
-    </div>
-
-
-    <!-- Início -->
-    <div class="flex flex-col">
-      <label for="starts_at" class="mb-1 font-medium text-gray-700">Início</label>
-      <p-datepicker formControlName="starts_at" dateFormat="yy-mm-dd" class="w-full"></p-datepicker>
-    </div>
-
-    <!-- Fim -->
-    <div class="flex flex-col">
-      <label for="ends_at" class="mb-1 font-medium text-gray-700">Fim</label>
-      <p-datepicker formControlName="ends_at" dateFormat="yy-mm-dd" class="w-full"></p-datepicker>
-    </div>
-  </div>
-
-  <!-- Botão -->
-  <div class="flex justify-end">
-    <button type="submit" pButton>Cadastrar</button>
-  </div>
-
+    </p-step-panels>
+  </p-stepper>
 </form>

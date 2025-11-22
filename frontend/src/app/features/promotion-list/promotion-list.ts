@@ -3,7 +3,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { PromotionsService } from '../../core/services/promotion/promotion.service';
 import { Promotion } from '../../shared/models/promotion.model';
 import { PromotionCard } from "../../shared/components/promotionCard/promotionCard";
-import { AuthService } from '../../core/services/auth/auth.service';
+import { catchError, of, timeout } from 'rxjs';
 
 @Component({
   selector: 'app-promotion-list',
@@ -13,14 +13,25 @@ import { AuthService } from '../../core/services/auth/auth.service';
 })
 export class PromotionList implements OnInit{
   private promotionsService = inject(PromotionsService);
-  private authService = inject(AuthService);
   promotions:Promotion[] | undefined
+  isLoading: boolean = true;
+  isError: boolean = false;
 
-  ngOnInit(): void {
-    this.promotionsService.findAll().subscribe(response =>{
-      console.log(this.authService.isLoggedIn())
+
+ngOnInit(): void {
+    this.promotionsService.findAll().pipe(
+      timeout(10000),  // Timeout de 10 segundos
+      catchError((error) => {
+        this.isError = true;
+        this.isLoading = false;
+        console.error('Erro ou timeout na API:', error);
+        return of([]);  // Retorna um array vazio em caso de erro
+      })
+    ).subscribe(response => {
       this.promotions = response;
-    })
+      this.isLoading = false;
+    });
+  }
 }
 
-}
+

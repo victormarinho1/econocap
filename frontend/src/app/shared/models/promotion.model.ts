@@ -1,4 +1,3 @@
-import { product } from './../../../../../backend/node_modules/effect/src/Equivalence';
 import { Product } from './product.model';
 export interface Promotion {
   id: string;

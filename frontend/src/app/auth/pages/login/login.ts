@@ -51,7 +51,7 @@ export class Login {
 
       this.authService.signin(signInPayload).subscribe({
         next: () =>{
-          this.router.navigate(['/home']);
+          this.router.navigate(['/admin']);
         }
       });
       console.log('Formulário enviado:', this.loginForm.value);

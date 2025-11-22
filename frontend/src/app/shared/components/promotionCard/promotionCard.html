@@ -5,25 +5,24 @@
       [value]="images"
       [visible]="displayBasic"
       [responsiveOptions]="responsiveOptions"
-      [containerStyle]="{ 'max-width': '700px', 'width': '100%' }"
+      [containerStyle]="{ 'max-width': '700px', width: '100%' }"
       [numVisible]="7"
       [circular]="true"
       [fullScreen]="true"
       [showItemNavigators]="true"
-      [showThumbnails]="false"    >
+      [showThumbnails]="false"
+    >
       <ng-template #item let-item>
-       <img
-
-  [src]="item.url"
-  style="width: 100%; height: 100%; object-fit: cover; display: block;"
-/>
-
+        <img
+          [src]="item.url"
+          style="width: 100%; height: 100%; object-fit: cover; display: block"
+        />
       </ng-template>
     </p-galleria>
-    <div class="mb-4 p-8 flex items-center justify-center">
+    <div class="mb-4 md:p-8 p-3 flex items-center justify-center">
       <p-card
-        [style]="{ width: '15rem', overflow: 'hidden' }"
-        class="shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl"
+        class="shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl md:w-full md:h-[35rem] flex justify-evenly
+"
       >
         <!-- Imagem do Produto -->
         <ng-template pTemplate="header">
@@ -51,39 +50,40 @@
             {{ description }}
           </p>
 
-          <!-- Preços -->
-          <div class="flex flex-col">
-            <span class="text-green-600 font-bold text-xl">
-              {{ formatCurrency(price) }}
+          <div class="">
+            <!-- Preços -->
+            <div class="flex flex-col">
+              <span class="text-green-600 font-bold text-xl">
+                {{ formatCurrency(price) }}
+              </span>
+              <span *ngIf="oldPrice > price" class="text-gray-400 line-through text-sm">
+                {{ formatCurrency(oldPrice) }}
+              </span>
+            </div>
+            <!-- Tag de Desconto -->
+            <span
+              *ngIf="discountPercent > 0"
+              class="px-2 py-1 bg-red-500 text-white text-xs rounded w-fit"
+            >
+              -{{ discountPercent }}% OFF
             </span>
 
-            <span *ngIf="oldPrice > price" class="text-gray-400 line-through text-sm">
-              {{ formatCurrency(oldPrice) }}
-            </span>
           </div>
 
-          <!-- Tag de Desconto -->
-          <span
-            *ngIf="discountPercent > 0"
-            class="px-2 py-1 bg-red-500 text-white text-xs rounded w-fit"
-          >
-            -{{ discountPercent }}% OFF
-          </span>
         </div>
-
-        <!-- Rodapé com botão de ação -->
-        <ng-template pTemplate="footer">
-          <div class="flex mt-3">
-            <a [href]="affiliateUrl" target="_blank" rel="nofollow noopener" class="w-full">
-              <p-button
-                label="Ver Oferta"
-                severity="success"
-                class="w-full"
-                styleClass="w-full"
-              ></p-button>
-            </a>
-          </div>
-        </ng-template>
+            <!-- Rodapé com botão de ação -->
+            <ng-template pTemplate="footer">
+              <div class="flex mt-3">
+                <a [href]="affiliateUrl" target="_blank" rel="nofollow noopener" class="w-full">
+                  <p-button
+                  label="Ver Oferta"
+                  severity="success"
+                  class="w-full"
+                  styleClass="w-full"
+                  ></p-button>
+                </a>
+              </div>
+            </ng-template>
       </p-card>
     </div>
   </div>

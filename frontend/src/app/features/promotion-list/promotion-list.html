@@ -1,8 +1,8 @@
-<section class="max-w-7xl mx-auto px-6 py-20">
+<section class="max-w-7xl mx-auto md:px-6 px-2 py-20">
     <div class="grid md:grid-cols-3 gap-8">
      @for (promotion of promotions; track promotion.title) {
 <app-product
-  [imageThubnail]="promotion.products.product_images[1].url"
+  [imageThubnail]="promotion.products.product_images[0].url"
   [images]="promotion.products.product_images"
     [title]="promotion.title"
     [subtitle]="promotion.summary"

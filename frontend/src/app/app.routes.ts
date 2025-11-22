@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { Admin } from './admin/admin';
-import { PromotionList } from './features/promotion-list/promotion-list';
 import { authGuard } from './auth/auth.guard';
 import { Login } from './auth/pages/login/login';
 import { PromotionForm } from './admin/components/promotion/promotion-form/promotion-form';
@@ -12,9 +11,18 @@ import { CategorieFormComponent } from './admin/components/categorie/categorie-f
 import { CategorieListComponent } from './admin/components/categorie/categorie-list/categorie-list.component';
 import { StoreFormComponent } from './admin/components/store/store-form/store-form.component';
 import { StoreListComponent } from './admin/components/store/store-list/store-list.component';
+import { ClientComponent } from './client/client.component';
+import { ClientHomeComponent } from './client/home/client-home/client-home.component';
 
 export const routes: Routes = [
-   { path: '', component: PromotionList },
+ {
+  path: '',
+  component: ClientComponent,
+  children: [
+    { path: '', component: ClientHomeComponent }
+  ]
+},
+
    { path: 'login', component: Login, title: 'Login' },
    { path: 'admin', component: Admin, canActivate: [authGuard] ,children:[
    {path:'', component:HomeComponent},
@@ -30,5 +38,6 @@ export const routes: Routes = [
    { path: '**', redirectTo: '/admin' },
 
    ]},
+
    { path: '**', redirectTo: '/' },
 ];

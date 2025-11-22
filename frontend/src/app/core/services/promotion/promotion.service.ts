@@ -11,8 +11,11 @@ export class PromotionsService {
   private http = inject(HttpClient);
   private apiUrl = environment.apiUrl;
 
-   findAll(): Observable<Promotion[]> {
-    
-  return this.http.get<Promotion[]>(`${this.apiUrl}/promotions`);
-}
+  findAll(): Observable<Promotion[]> {
+    return this.http.get<Promotion[]>(`${this.apiUrl}/promotions`);
+  }
+
+  create(data: any): Observable<Promotion> {
+    return this.http.post<Promotion>(`${this.apiUrl}/promotions`, data);
+  }
 }
