@@ -1,5 +1,5 @@
 import { DatePicker } from 'primeng/datepicker';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 import { InputText } from 'primeng/inputtext';
@@ -29,9 +29,15 @@ private storeService = inject(StoreService)
 private promotionService = inject(PromotionsService)
 private messageService = inject(MessageService)
 
+
+stores:Store[] = []
+products:Product[] = []
+selectedStore:Store | null = null
+selectedProduct:Product | null = null
+categories:any[] = []
+
+
 activeStep: number = 1;
-
-
 successMessage: string | null = null;
 errorMessage: string | null = null;
 
@@ -48,14 +54,6 @@ promotionForm = new FormGroup({
   starts_at: new FormControl(new Date(), Validators.required),
   ends_at: new FormControl(new Date(), Validators.required),
 });
-
-stores:Store[] = []
-products:Product[] = []
-selectedStore:Store | null = null
-selectedProduct:Product | null = null
-categories:any[] = []
-
-
 
   ngOnInit(): void {
     this.storeService.findAll().subscribe(response =>{

@@ -1,4 +1,4 @@
-<section class="max-w-7xl mx-auto md:px-6 px-2 py-20">
+<!-- <section class="max-w-7xl mx-auto md:px-6 px-2 py-20">
     <div class="grid md:grid-cols-3 gap-8">
      @for (promotion of promotions; track promotion.title) {
 <app-product
@@ -15,5 +15,96 @@
 }
 
     </div>
-    </section>
+    </section> -->
 
+<div class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-6 p-2">
+    <p-dataview #dv [value]="promotions" [layout]="layout" [paginator]="true"
+    (onPageChange)="onPageChange($event)" [first]="0" [rows]="6" [totalRecords]="120"
+    [rowsPerPageOptions]="[5, 10, 15]" [filterBy]="">
+        <ng-template #header>
+            <div class="flex justify-end">
+                <p-selectbutton [(ngModel)]="layout" [options]="options" [allowEmpty]="false">
+                    <ng-template #item let-item>
+                        <i class="pi " [ngClass]="{ 'pi-bars': item === 'list', 'pi-table': item === 'grid' }"></i>
+                    </ng-template>
+                </p-selectbutton>
+            </div>
+        </ng-template>
+        <ng-template #list let-items>
+@for (item of items; track item.name; let first = $first) {
+  <div>
+                <div
+                    class="flex flex-col sm:flex-row sm:items-center p-6 gap-4"
+                    [ngClass]="{ 'border-t border-surface-200 dark:border-surface-700': !first }"
+                >
+                    <div class="md:w-40 relative">
+                        <img
+                            class="block xl:block mx-auto rounded w-full"
+                            [src]="item.products.product_images[0].url"
+                            [alt]="item.name"
+                        />
+                        <p-tag
+                            [value]="item.inventoryStatus"
+                            [severity]="getSeverity(item)"
+                            class="absolute dark:!bg-surface-900"
+                            [style.left.px]="4"
+                            [style.top.px]="4"
+                        />
+                    </div>
+                    <div class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6">
+                        <div class="flex flex-row md:flex-col justify-between items-start gap-2">
+                            <div>
+                                <span class="font-medium text-surface-500 dark:text-surface-400 text-sm">{{ item.category }}</span>
+                                <div class="text-lg font-medium mt-2">{{ item.name }}</div>
+                            </div>
+                            <div class="bg-surface-100 p-1" style="border-radius: 30px">
+                                <div
+                                    class="bg-surface-0 flex items-center gap-2 justify-center py-1 px-2"
+                                    style="border-radius: 30px; box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06)"
+                                >
+                                    <span class="text-surface-900 font-medium text-sm">{{ item.rating }}</span>
+                                    <i class="pi pi-star-fill text-yellow-500"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col md:items-end gap-8">
+                            <span class="text-xl font-semibold">{{ item.price | currency: 'USD' }}</span>
+                            <div class="flex flex-row-reverse md:flex-row gap-2">
+                                <button pButton icon="pi pi-heart" [outlined]="true"></button>
+                                <button
+                                    pButton
+                                    icon="pi pi-shopping-cart"
+                                    label="Ver Oferta"
+                                    [disabled]="item.inventoryStatus === 'OUTOFSTOCK'"
+                                    class="flex-auto md:flex-initial whitespace-nowrap"
+                                ></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+} @empty {
+<li>There are no items.</li>
+}
+
+        </ng-template>
+        <ng-template #grid let-items>
+            <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-9 md:px-70 md:py-10">
+              @for (promotion of items; track promotion.name) {
+               <app-product
+  [imageThubnail]="promotion.products.product_images[0].url"
+  [images]="promotion.products.product_images"
+    [title]="promotion.title"
+    [subtitle]="promotion.summary"
+    [description]="promotion.products.description"
+    [price]="promotion.price"
+    [oldPrice]="promotion.old_price"
+    [affiliateUrl]="promotion.affiliate_url"></app-product>
+} @empty {
+<li>There are no items.</li>
+}
+
+            </div>
+        </ng-template>
+    </p-dataview>
+</div>

@@ -1,4 +1,4 @@
-<div class="card">
+<!-- <div class="card">
   <div class="card flex justify-center">
     <p-galleria
       (visibleChange)="displayBasic = false"
@@ -21,47 +21,46 @@
     </p-galleria>
     <div class="mb-4 md:p-8 p-3 flex items-center justify-center">
       <p-card
-        class="shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl md:w-full md:h-[35rem] flex justify-evenly
-"
-      >
-        <!-- Imagem do Produto -->
-        <ng-template pTemplate="header">
+        class="shadow-lg transform transition duration-300 hover:scale-105 hover:shadow-2xl md:w-full md:h-[35rem] flex justify-evenly"
+      > -->
+<!-- Imagem do Produto -->
+<!-- <ng-template pTemplate="header">
           <img
             [src]="imageThubnail"
             alt="Produto"
             class="w-full object-cover cursor-pointer"
             (click)="displayBasic = true"
           />
-        </ng-template>
+        </ng-template> -->
 
-        <!-- Título do Produto -->
-        <ng-template pTemplate="title">
+<!-- Título do Produto -->
+<!-- <ng-template pTemplate="title">
           {{ title }}
-        </ng-template>
+        </ng-template> -->
 
-        <!-- Subtítulo (Loja / Categoria) -->
-        <ng-template pTemplate="subtitle">
+<!-- Subtítulo (Loja / Categoria) -->
+<!-- <ng-template pTemplate="subtitle">
           {{ subtitle }}
-        </ng-template>
+        </ng-template> -->
 
-        <!-- Conteúdo do Card -->
-        <div class="flex flex-col gap-2">
+<!-- Conteúdo do Card -->
+<!-- <div class="flex flex-col gap-2">
           <p class="text-sm text-gray-600">
             {{ description }}
           </p>
 
-          <div class="">
-            <!-- Preços -->
-            <div class="flex flex-col">
+          <div class=""> -->
+<!-- Preços -->
+<!-- <div class="flex flex-col">
               <span class="text-green-600 font-bold text-xl">
                 {{ formatCurrency(price) }}
               </span>
               <span *ngIf="oldPrice > price" class="text-gray-400 line-through text-sm">
                 {{ formatCurrency(oldPrice) }}
               </span>
-            </div>
-            <!-- Tag de Desconto -->
-            <span
+            </div> -->
+<!-- Tag de Desconto -->
+<!-- <span
               *ngIf="discountPercent > 0"
               class="px-2 py-1 bg-red-500 text-white text-xs rounded w-fit"
             >
@@ -70,9 +69,9 @@
 
           </div>
 
-        </div>
-            <!-- Rodapé com botão de ação -->
-            <ng-template pTemplate="footer">
+        </div> -->
+<!-- Rodapé com botão de ação -->
+<!-- <ng-template pTemplate="footer">
               <div class="flex mt-3">
                 <a [href]="affiliateUrl" target="_blank" rel="nofollow noopener" class="w-full">
                   <p-button
@@ -85,6 +84,38 @@
               </div>
             </ng-template>
       </p-card>
+    </div>
+  </div>
+</div> -->
+
+<div class="col-span-6 sm:col-span-6 md:col-span-4 xl:col-span-6 p-2">
+  <div
+    class="p-6 border border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900 rounded flex flex-col"
+  >
+    <div class="bg-surface-50 flex justify-center rounded p-4">
+      <div class="relative mx-auto">
+        <img class="rounded w-full" [src]="imageThubnail" style="max-width: 300px" />
+      </div>
+    </div>
+    <div class="pt-6">
+      <div class="flex flex-row justify-between products-start gap-2">
+        <div>
+          <span class="font-medium text-surface-500 dark:text-surface-400 text-sm"> </span>
+          <div class="text-lg font-medium mt-1">{{ title }}</div>
+        </div>
+        
+      </div>
+      <div class="flex flex-col gap-6 mt-6">
+        <span class="text-2xl font-semibold">{{ formatCurrency(price)}}</span>
+        <div class="flex gap-2">
+          <button
+            pButton
+            icon="pi pi-shopping-cart"
+            label="Ver oferta"
+            class="flex-auto whitespace-nowrap"
+          ></button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
