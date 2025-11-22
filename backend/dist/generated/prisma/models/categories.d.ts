@@ -92,12 +92,12 @@ export type categoriesWhereInput = {
     NOT?: Prisma.categoriesWhereInput | Prisma.categoriesWhereInput[];
     id?: Prisma.IntFilter<"categories"> | number;
     name?: Prisma.StringFilter<"categories"> | string;
-    promotions?: Prisma.PromotionsListRelationFilter;
+    products?: Prisma.ProductsListRelationFilter;
 };
 export type categoriesOrderByWithRelationInput = {
     id?: Prisma.SortOrder;
     name?: Prisma.SortOrder;
-    promotions?: Prisma.promotionsOrderByRelationAggregateInput;
+    products?: Prisma.productsOrderByRelationAggregateInput;
 };
 export type categoriesWhereUniqueInput = Prisma.AtLeast<{
     id?: number;
@@ -105,7 +105,7 @@ export type categoriesWhereUniqueInput = Prisma.AtLeast<{
     AND?: Prisma.categoriesWhereInput | Prisma.categoriesWhereInput[];
     OR?: Prisma.categoriesWhereInput[];
     NOT?: Prisma.categoriesWhereInput | Prisma.categoriesWhereInput[];
-    promotions?: Prisma.PromotionsListRelationFilter;
+    products?: Prisma.ProductsListRelationFilter;
 }, "id" | "name">;
 export type categoriesOrderByWithAggregationInput = {
     id?: Prisma.SortOrder;
@@ -125,21 +125,21 @@ export type categoriesScalarWhereWithAggregatesInput = {
 };
 export type categoriesCreateInput = {
     name: string;
-    promotions?: Prisma.promotionsCreateNestedManyWithoutCategoriesInput;
+    products?: Prisma.productsCreateNestedManyWithoutCategoriesInput;
 };
 export type categoriesUncheckedCreateInput = {
     id?: number;
     name: string;
-    promotions?: Prisma.promotionsUncheckedCreateNestedManyWithoutCategoriesInput;
+    products?: Prisma.productsUncheckedCreateNestedManyWithoutCategoriesInput;
 };
 export type categoriesUpdateInput = {
     name?: Prisma.StringFieldUpdateOperationsInput | string;
-    promotions?: Prisma.promotionsUpdateManyWithoutCategoriesNestedInput;
+    products?: Prisma.productsUpdateManyWithoutCategoriesNestedInput;
 };
 export type categoriesUncheckedUpdateInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
-    promotions?: Prisma.promotionsUncheckedUpdateManyWithoutCategoriesNestedInput;
+    products?: Prisma.productsUncheckedUpdateManyWithoutCategoriesNestedInput;
 };
 export type categoriesCreateManyInput = {
     id?: number;
@@ -184,63 +184,63 @@ export type IntFieldUpdateOperationsInput = {
     multiply?: number;
     divide?: number;
 };
-export type categoriesCreateNestedOneWithoutPromotionsInput = {
-    create?: Prisma.XOR<Prisma.categoriesCreateWithoutPromotionsInput, Prisma.categoriesUncheckedCreateWithoutPromotionsInput>;
-    connectOrCreate?: Prisma.categoriesCreateOrConnectWithoutPromotionsInput;
+export type categoriesCreateNestedOneWithoutProductsInput = {
+    create?: Prisma.XOR<Prisma.categoriesCreateWithoutProductsInput, Prisma.categoriesUncheckedCreateWithoutProductsInput>;
+    connectOrCreate?: Prisma.categoriesCreateOrConnectWithoutProductsInput;
     connect?: Prisma.categoriesWhereUniqueInput;
 };
-export type categoriesUpdateOneWithoutPromotionsNestedInput = {
-    create?: Prisma.XOR<Prisma.categoriesCreateWithoutPromotionsInput, Prisma.categoriesUncheckedCreateWithoutPromotionsInput>;
-    connectOrCreate?: Prisma.categoriesCreateOrConnectWithoutPromotionsInput;
-    upsert?: Prisma.categoriesUpsertWithoutPromotionsInput;
+export type categoriesUpdateOneWithoutProductsNestedInput = {
+    create?: Prisma.XOR<Prisma.categoriesCreateWithoutProductsInput, Prisma.categoriesUncheckedCreateWithoutProductsInput>;
+    connectOrCreate?: Prisma.categoriesCreateOrConnectWithoutProductsInput;
+    upsert?: Prisma.categoriesUpsertWithoutProductsInput;
     disconnect?: Prisma.categoriesWhereInput | boolean;
     delete?: Prisma.categoriesWhereInput | boolean;
     connect?: Prisma.categoriesWhereUniqueInput;
-    update?: Prisma.XOR<Prisma.XOR<Prisma.categoriesUpdateToOneWithWhereWithoutPromotionsInput, Prisma.categoriesUpdateWithoutPromotionsInput>, Prisma.categoriesUncheckedUpdateWithoutPromotionsInput>;
+    update?: Prisma.XOR<Prisma.XOR<Prisma.categoriesUpdateToOneWithWhereWithoutProductsInput, Prisma.categoriesUpdateWithoutProductsInput>, Prisma.categoriesUncheckedUpdateWithoutProductsInput>;
 };
-export type categoriesCreateWithoutPromotionsInput = {
+export type categoriesCreateWithoutProductsInput = {
     name: string;
 };
-export type categoriesUncheckedCreateWithoutPromotionsInput = {
+export type categoriesUncheckedCreateWithoutProductsInput = {
     id?: number;
     name: string;
 };
-export type categoriesCreateOrConnectWithoutPromotionsInput = {
+export type categoriesCreateOrConnectWithoutProductsInput = {
     where: Prisma.categoriesWhereUniqueInput;
-    create: Prisma.XOR<Prisma.categoriesCreateWithoutPromotionsInput, Prisma.categoriesUncheckedCreateWithoutPromotionsInput>;
+    create: Prisma.XOR<Prisma.categoriesCreateWithoutProductsInput, Prisma.categoriesUncheckedCreateWithoutProductsInput>;
 };
-export type categoriesUpsertWithoutPromotionsInput = {
-    update: Prisma.XOR<Prisma.categoriesUpdateWithoutPromotionsInput, Prisma.categoriesUncheckedUpdateWithoutPromotionsInput>;
-    create: Prisma.XOR<Prisma.categoriesCreateWithoutPromotionsInput, Prisma.categoriesUncheckedCreateWithoutPromotionsInput>;
+export type categoriesUpsertWithoutProductsInput = {
+    update: Prisma.XOR<Prisma.categoriesUpdateWithoutProductsInput, Prisma.categoriesUncheckedUpdateWithoutProductsInput>;
+    create: Prisma.XOR<Prisma.categoriesCreateWithoutProductsInput, Prisma.categoriesUncheckedCreateWithoutProductsInput>;
     where?: Prisma.categoriesWhereInput;
 };
-export type categoriesUpdateToOneWithWhereWithoutPromotionsInput = {
+export type categoriesUpdateToOneWithWhereWithoutProductsInput = {
     where?: Prisma.categoriesWhereInput;
-    data: Prisma.XOR<Prisma.categoriesUpdateWithoutPromotionsInput, Prisma.categoriesUncheckedUpdateWithoutPromotionsInput>;
+    data: Prisma.XOR<Prisma.categoriesUpdateWithoutProductsInput, Prisma.categoriesUncheckedUpdateWithoutProductsInput>;
 };
-export type categoriesUpdateWithoutPromotionsInput = {
+export type categoriesUpdateWithoutProductsInput = {
     name?: Prisma.StringFieldUpdateOperationsInput | string;
 };
-export type categoriesUncheckedUpdateWithoutPromotionsInput = {
+export type categoriesUncheckedUpdateWithoutProductsInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
     name?: Prisma.StringFieldUpdateOperationsInput | string;
 };
 export type CategoriesCountOutputType = {
-    promotions: number;
+    products: number;
 };
 export type CategoriesCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    promotions?: boolean | CategoriesCountOutputTypeCountPromotionsArgs;
+    products?: boolean | CategoriesCountOutputTypeCountProductsArgs;
 };
 export type CategoriesCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     select?: Prisma.CategoriesCountOutputTypeSelect<ExtArgs> | null;
 };
-export type CategoriesCountOutputTypeCountPromotionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    where?: Prisma.promotionsWhereInput;
+export type CategoriesCountOutputTypeCountProductsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.productsWhereInput;
 };
 export type categoriesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
     id?: boolean;
     name?: boolean;
-    promotions?: boolean | Prisma.categories$promotionsArgs<ExtArgs>;
+    products?: boolean | Prisma.categories$productsArgs<ExtArgs>;
     _count?: boolean | Prisma.CategoriesCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["categories"]>;
 export type categoriesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -257,7 +257,7 @@ export type categoriesSelectScalar = {
 };
 export type categoriesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name", ExtArgs["result"]["categories"]>;
 export type categoriesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    promotions?: boolean | Prisma.categories$promotionsArgs<ExtArgs>;
+    products?: boolean | Prisma.categories$productsArgs<ExtArgs>;
     _count?: boolean | Prisma.CategoriesCountOutputTypeDefaultArgs<ExtArgs>;
 };
 export type categoriesIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {};
@@ -265,7 +265,7 @@ export type categoriesIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.E
 export type $categoriesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     name: "categories";
     objects: {
-        promotions: Prisma.$promotionsPayload<ExtArgs>[];
+        products: Prisma.$productsPayload<ExtArgs>[];
     };
     scalars: runtime.Types.Extensions.GetPayloadResult<{
         id: number;
@@ -322,7 +322,7 @@ export interface categoriesDelegate<ExtArgs extends runtime.Types.Extensions.Int
 }
 export interface Prisma__categoriesClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise";
-    promotions<T extends Prisma.categories$promotionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.categories$promotionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$promotionsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
+    products<T extends Prisma.categories$productsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.categories$productsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$productsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>;
     then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
     catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
     finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
@@ -429,16 +429,16 @@ export type categoriesDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
     where?: Prisma.categoriesWhereInput;
     limit?: number;
 };
-export type categories$promotionsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-    select?: Prisma.promotionsSelect<ExtArgs> | null;
-    omit?: Prisma.promotionsOmit<ExtArgs> | null;
-    include?: Prisma.promotionsInclude<ExtArgs> | null;
-    where?: Prisma.promotionsWhereInput;
-    orderBy?: Prisma.promotionsOrderByWithRelationInput | Prisma.promotionsOrderByWithRelationInput[];
-    cursor?: Prisma.promotionsWhereUniqueInput;
+export type categories$productsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    select?: Prisma.productsSelect<ExtArgs> | null;
+    omit?: Prisma.productsOmit<ExtArgs> | null;
+    include?: Prisma.productsInclude<ExtArgs> | null;
+    where?: Prisma.productsWhereInput;
+    orderBy?: Prisma.productsOrderByWithRelationInput | Prisma.productsOrderByWithRelationInput[];
+    cursor?: Prisma.productsWhereUniqueInput;
     take?: number;
     skip?: number;
-    distinct?: Prisma.PromotionsScalarFieldEnum | Prisma.PromotionsScalarFieldEnum[];
+    distinct?: Prisma.ProductsScalarFieldEnum | Prisma.ProductsScalarFieldEnum[];
 };
 export type categoriesDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     select?: Prisma.categoriesSelect<ExtArgs> | null;

@@ -2,14 +2,17 @@ import { Inject, Injectable } from '@nestjs/common';
 import { CreatePromotionDto } from './dto/create-promotion.dto';
 import { UpdatePromotionDto } from './dto/update-promotion.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
+import { Prisma } from 'generated/prisma/client';
 
 @Injectable()
 export class PromotionsService {
   @Inject()
   private prismaService:PrismaService
 
-  create(createPromotionDto: CreatePromotionDto) {
-    return 'This action adds a new promotion';
+  create(createPromotionDto: Prisma.promotionsCreateInput) {
+    return this.prismaService.promotions.create({
+      data:{...createPromotionDto}
+    })
   }
 
   findAll() {

@@ -74,24 +74,21 @@ exports.ClicksScalarFieldEnum = {
 };
 exports.ProductsScalarFieldEnum = {
     id: 'id',
+    category_id: 'category_id',
     name: 'name',
     description: 'description',
     created_at: 'created_at'
 };
 exports.PromotionsScalarFieldEnum = {
     id: 'id',
-    categories_id: 'categories_id',
-    stores_id: 'stores_id',
     product_id: 'product_id',
+    store_id: 'store_id',
     title: 'title',
     summary: 'summary',
     price: 'price',
     old_price: 'old_price',
-    discount_price: 'discount_price',
     currency: 'currency',
     affiliate_url: 'affiliate_url',
-    affiliate_network: 'affiliate_network',
-    affiliate_tag: 'affiliate_tag',
     coupon_code: 'coupon_code',
     starts_at: 'starts_at',
     ends_at: 'ends_at',

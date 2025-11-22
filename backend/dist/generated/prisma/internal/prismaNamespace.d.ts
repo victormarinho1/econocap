@@ -746,6 +746,7 @@ export declare const ClicksScalarFieldEnum: {
 export type ClicksScalarFieldEnum = (typeof ClicksScalarFieldEnum)[keyof typeof ClicksScalarFieldEnum];
 export declare const ProductsScalarFieldEnum: {
     readonly id: "id";
+    readonly category_id: "category_id";
     readonly name: "name";
     readonly description: "description";
     readonly created_at: "created_at";
@@ -753,18 +754,14 @@ export declare const ProductsScalarFieldEnum: {
 export type ProductsScalarFieldEnum = (typeof ProductsScalarFieldEnum)[keyof typeof ProductsScalarFieldEnum];
 export declare const PromotionsScalarFieldEnum: {
     readonly id: "id";
-    readonly categories_id: "categories_id";
-    readonly stores_id: "stores_id";
     readonly product_id: "product_id";
+    readonly store_id: "store_id";
     readonly title: "title";
     readonly summary: "summary";
     readonly price: "price";
     readonly old_price: "old_price";
-    readonly discount_price: "discount_price";
     readonly currency: "currency";
     readonly affiliate_url: "affiliate_url";
-    readonly affiliate_network: "affiliate_network";
-    readonly affiliate_tag: "affiliate_tag";
     readonly coupon_code: "coupon_code";
     readonly starts_at: "starts_at";
     readonly ends_at: "ends_at";
