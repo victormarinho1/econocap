@@ -37,12 +37,12 @@ throw new Error('Method not implemented.');
     this.promotionsService
       .findAll()
       .pipe(
-        timeout(10000), // Timeout de 10 segundos
+        timeout(10000),
         catchError((error) => {
           this.isError = true;
           this.isLoading = false;
           console.error('Erro ou timeout na API:', error);
-          return of([]); // Retorna um array vazio em caso de erro
+          return of([]);
         })
       )
       .subscribe((response) => {
@@ -51,12 +51,5 @@ throw new Error('Method not implemented.');
       });
   }
 
-  getSeverity(product: Product) {
-    switch ('INSTOCK') {
-      case 'INSTOCK':
-        return 'success';
-      default:
-        return null;
-    }
-  }
+
 }

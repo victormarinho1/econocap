@@ -1,28 +1,31 @@
-<!-- <section class="max-w-7xl mx-auto md:px-6 px-2 py-20">
-    <div class="grid md:grid-cols-3 gap-8">
-     @for (promotion of promotions; track promotion.title) {
-<app-product
-  [imageThubnail]="promotion.products.product_images[0].url"
-  [images]="promotion.products.product_images"
-    [title]="promotion.title"
-    [subtitle]="promotion.summary"
-    [description]="promotion.products.description"
-    [price]="promotion.price"
-    [oldPrice]="promotion.old_price"
-    [affiliateUrl]="promotion.affiliate_url"></app-product>
-} @empty {
-<li>There are no items.</li>
-}
+<!-- <div class="flex justify-center md:gap-[7vw] sm:gap[3vw] sm:grid-col-3 sm:grid"> -->
 
-    </div>
-    </section> -->
+
 
 <div class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-6 p-2">
-    <p-dataview #dv [value]="promotions" [layout]="layout" [paginator]="true"
+
+  <div class="justify-center pb-5 grid gap-x-[3vw] xl:grid-cols-6 grid-cols-3 xl:px-70 sm:grid-cols-3 sm:flex gap-y-5">
+
+    <p-button label="Ofertas" variant="text" (onClick)="dv.filter('')" [raised]="true" icon="pi pi-check" />
+  <p-button label="Eletrônicos" (onClick)="dv.filter('1')"  variant="text" [raised]="true" icon="pi pi-check" />
+  <p-button label="Roupas" variant="text" [raised]="true" icon="pi pi-check" />
+  <p-button label="Alimentos" variant="text" [raised]="true" icon="pi pi-check" />
+  <p-button label="Beleza e Cuidados" variant="text" [raised]="true" icon="pi pi-check" />
+  <p-button label="Casa e Decoração" variant="text" [raised]="true" icon="pi pi-check" />
+  </div>
+  <p-dataview #dv [value]="promotions" [layout]="layout" [paginator]="true"
     (onPageChange)="onPageChange($event)" [first]="0" [rows]="6" [totalRecords]="120"
-    [rowsPerPageOptions]="[5, 10, 15]" [filterBy]="">
+    [rowsPerPageOptions]="[5, 10, 15]" [filterBy]="'products.category_id'">
         <ng-template #header>
             <div class="flex justify-end">
+              <span class="p-input-icon-left p-mb-2 p-mb-md-0">
+          <i class="pi pi-search"></i>
+          <input
+            type="search"
+            pInputText
+            placeholder="Search"
+            (input)="dv.filter($event.target.value)"/>
+        </span>
                 <p-selectbutton [(ngModel)]="layout" [options]="options" [allowEmpty]="false">
                     <ng-template #item let-item>
                         <i class="pi " [ngClass]="{ 'pi-bars': item === 'list', 'pi-table': item === 'grid' }"></i>
@@ -43,13 +46,7 @@
                             [src]="item.products.product_images[0].url"
                             [alt]="item.name"
                         />
-                        <p-tag
-                            [value]="item.inventoryStatus"
-                            [severity]="getSeverity(item)"
-                            class="absolute dark:!bg-surface-900"
-                            [style.left.px]="4"
-                            [style.top.px]="4"
-                        />
+
                     </div>
                     <div class="flex flex-col md:flex-row justify-between md:items-center flex-1 gap-6">
                         <div class="flex flex-row md:flex-col justify-between items-start gap-2">
@@ -89,7 +86,7 @@
 
         </ng-template>
         <ng-template #grid let-items>
-            <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-9 md:px-70 md:py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-9 xl:px-70 py-10">
               @for (promotion of items; track promotion.name) {
                <app-product
   [imageThubnail]="promotion.products.product_images[0].url"
