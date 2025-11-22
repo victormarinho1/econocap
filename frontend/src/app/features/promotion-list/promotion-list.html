@@ -1,30 +1,27 @@
-<!-- <div class="flex justify-center md:gap-[7vw] sm:gap[3vw] sm:grid-col-3 sm:grid"> -->
-
-
-
 <div class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-6 p-2">
 
   <div class="justify-center pb-5 grid gap-x-[3vw] xl:grid-cols-6 grid-cols-3 xl:px-70 sm:grid-cols-3 sm:flex gap-y-5">
-
     <p-button label="Ofertas" variant="text" (onClick)="dv.filter('')" [raised]="true" icon="pi pi-check" />
-  <p-button label="Eletrônicos" (onClick)="dv.filter('1')"  variant="text" [raised]="true" icon="pi pi-check" />
-  <p-button label="Roupas" variant="text" [raised]="true" icon="pi pi-check" />
-  <p-button label="Alimentos" variant="text" [raised]="true" icon="pi pi-check" />
-  <p-button label="Beleza e Cuidados" variant="text" [raised]="true" icon="pi pi-check" />
-  <p-button label="Casa e Decoração" variant="text" [raised]="true" icon="pi pi-check" />
+@for (item of cateories; track item.name;) {
+  <p-button [label]="item.name" (onClick)="dv.filter(item.id)"  variant="text" [raised]="true" icon="pi pi-check" />
+
+}
+
   </div>
   <p-dataview #dv [value]="promotions" [layout]="layout" [paginator]="true"
     (onPageChange)="onPageChange($event)" [first]="0" [rows]="6" [totalRecords]="120"
-    [rowsPerPageOptions]="[5, 10, 15]" [filterBy]="'products.category_id'">
+    [rowsPerPageOptions]="[5, 10, 15]" [filterBy]="'products.category_id,title'">
         <ng-template #header>
             <div class="flex justify-end">
-              <span class="p-input-icon-left p-mb-2 p-mb-md-0">
-          <i class="pi pi-search"></i>
-          <input
-            type="search"
-            pInputText
-            placeholder="Search"
-            (input)="dv.filter($event.target.value)"/>
+
+              <span class="p-input-icon-left p-mb-2 p-mb-md-0 me-2">
+              <p-inputgroup>
+    <input pInputText placeholder="Keyword" (input)="dv.filter($event.target.value)" />
+    <p-inputgroup-addon>
+        <p-button icon="pi pi-search" severity="secondary" variant="text" />
+    </p-inputgroup-addon>
+</p-inputgroup>
+
         </span>
                 <p-selectbutton [(ngModel)]="layout" [options]="options" [allowEmpty]="false">
                     <ng-template #item let-item>
