@@ -2,15 +2,19 @@
 
   <div class="justify-center pb-5 grid gap-x-[3vw] xl:grid-cols-6 grid-cols-3 xl:px-70 sm:grid-cols-3 sm:flex gap-y-5">
     <p-button label="Ofertas" variant="text" (onClick)="dv.filter('')" [raised]="true" icon="pi pi-check" />
-@for (item of cateories; track item.name;) {
-  <p-button [label]="item.name" (onClick)="dv.filter(item.id)"  variant="text" [raised]="true" icon="pi pi-check" />
+    @if(categories.hasValue()){
+      @for (item of categories.value(); track item.name;) {
+        <p-button [label]="item.name" (onClick)="dv.filter(item.id)"  variant="text" [raised]="true" icon="pi pi-check" />
 
-}
+      }
+
+    }
 
   </div>
-  <p-dataview #dv [value]="promotions" [layout]="layout" [paginator]="true"
-    (onPageChange)="onPageChange($event)" [first]="0" [rows]="6" [totalRecords]="120"
-    [rowsPerPageOptions]="[5, 10, 15]" [filterBy]="'products.category_id,title'">
+  <p-dataview #dv [value]="promotions.value()" [layout]="layout" [paginator]="true"
+  (onPageChange)="onPageChange($event)" [first]="0" [rows]="6" [totalRecords]="120"
+  [rowsPerPageOptions]="[5, 10, 15]" [filterBy]="'products.category_id,title'">
+  @if(promotions.hasValue()){
         <ng-template #header>
             <div class="flex justify-end">
 
@@ -31,7 +35,7 @@
             </div>
         </ng-template>
         <ng-template #list let-items>
-@for (item of items; track item.name; let first = $first) {
+@for (item of items; track item.id; let first = $first) {
   <div>
                 <div
                     class="flex flex-col sm:flex-row sm:items-center p-6 gap-4"
@@ -84,7 +88,7 @@
         </ng-template>
         <ng-template #grid let-items>
             <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-9 xl:px-70 py-10">
-              @for (promotion of items; track promotion.name) {
+              @for (promotion of items; track promotion.id) {
                <app-product
   [imageThubnail]="promotion.products.product_images[0].url"
   [images]="promotion.products.product_images"
@@ -100,5 +104,7 @@
 
             </div>
         </ng-template>
+      }
     </p-dataview>
+
 </div>

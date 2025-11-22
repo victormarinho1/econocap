@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, resource, signal } from '@angular/core';
 import { PromotionsService } from '../../core/services/promotion/promotion.service';
 import { Promotion } from '../../shared/models/promotion.model';
 import { PromotionCard } from '../../shared/components/promotionCard/promotionCard';
@@ -31,55 +31,32 @@ import { InputGroupModule } from 'primeng/inputgroup';
   templateUrl: './promotion-list.html',
   styleUrl: './promotion-list.css',
 })
-export class PromotionList implements OnInit {
+export class PromotionList {
   onPageChange($event: Event) {
     throw new Error('Method not implemented.');
   }
   private promotionsService = inject(PromotionsService);
   private categorieService = inject(CategoryService);
-  promotions: Promotion[] | undefined;
-  cateories: Category[] = [];
+
+
   isLoading: boolean = true;
   isError: boolean = false;
   products = signal<any>([]);
   productService = inject(ProductService);
   layout: 'grid' | 'list' = 'grid';
 
-  options = ['list', 'grid'];
-  ngOnInit(): void {
-    this.promotionsService
-      .findAll()
-      .pipe(
-        timeout(10000),
-        catchError((error) => {
-          this.isError = true;
-          this.isLoading = false;
-          console.error('Erro ou timeout na API:', error);
-          return of([]);
-        })
-      )
-      .subscribe((response) => {
-        this.promotions = response;
-        console.log(response);
-        this.isLoading = false;
-      });
 
-    this.categorieService
-      .findAll()
-      .pipe(
-        timeout(10000),
-        catchError((error) => {
-          this.isError = true;
-          this.isLoading = false;
-          console.error('Erro ou timeout na API:', error);
-          return of([]);
-        })
-      )
-      .subscribe({
-        next: (response) => {
-          this.cateories = response;
-          console.log(response);
-        },
-      });
-  }
+  categories = resource({
+    params: () => ({}),
+    loader: async ({}) => await this.categorieService.findAll()
+  });
+
+  promotions = resource({
+    params: () => ({}),
+    loader: async ({}) => await this.promotionsService.findAll()
+  });
+
+
+  options = ['list', 'grid'];
+
 }

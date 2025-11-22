@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environments';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { Category } from '../../../shared/models/category.model';
 
 @Injectable({
@@ -11,8 +11,8 @@ export class CategoryService {
       private http = inject(HttpClient);
   private apiUrl = environment.apiUrl;
 
-   findAll(): Observable<Category[]> {
+   findAll(): Promise<Category[]> {
 
-  return this.http.get<Category[]>(`${this.apiUrl}/categories`);
+  return firstValueFrom(this.http.get<Category[]>(`${this.apiUrl}/categories`));
 }
 }
