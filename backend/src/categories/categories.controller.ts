@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
+import { Public } from 'src/auth/decorators/public.decorator';
 
 @Controller('categories')
 export class CategoriesController {
@@ -12,6 +13,7 @@ export class CategoriesController {
     return this.categoriesService.create(createCategoryDto);
   }
 
+  @Public()  
   @Get()
   findAll() {
     return this.categoriesService.findAll();
